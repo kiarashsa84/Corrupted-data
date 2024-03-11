@@ -12,30 +12,33 @@ public class App {
             citation[i] = input.nextInt(); 
         }
 
-        for (int i = 0; i < citation.length; i++){
-            for (int j = i +1 ; j < citation.length; j++){
-                if (citation[i] > citation[j]){
-                    int tmp = citation[j]; 
-                    citation[j] = citation[i]; 
-                    citation[i] = tmp; 
-                }
+        int min = 1000; 
+        int h_index = count_article; 
+        int pos = 100; 
+        
+        while (true) {
+            min = 1000; 
+        
+            for (int i =0 ; i < count_article; i++){
+        
+                if (citation[i] < min){
+                    min = citation[i];
+                    citation[i] = 1000; 
+                    pos = i; 
+                }  
+            
             }
-        } 
+    
 
-        int h_index = citation.length ; 
-        int cnt =0; 
-
-        while (true){
-            if (citation[cnt] >= h_index){
-                break; 
-            }
-            else{
+            if (min < h_index){
                 h_index--; 
-                citation[cnt++] = -1;
-            }
-        }
-        System.out.println(h_index);
 
+            }   
+            else break;  
+        }
+
+        System.out.println(h_index);
+        
         
     }
 }
