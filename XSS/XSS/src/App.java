@@ -56,7 +56,10 @@ public class App {
 
                     if (exist){
                         System.out.println("Username Exists!");
-                        break;
+                        break;  
+
+
+
                     }
 
                     else {
@@ -122,6 +125,15 @@ public class App {
                     // System.out.println("hello");
 
                     String inUser = input.nextLine();
+
+                    boolean existuser = false; 
+
+                    for (int i = 0; i < 100 ; i++){
+                        if (inUser.equals(usernames[i][0])){
+                            existuser = true;
+                        }
+                    }
+                  
                     
                     
                     if (checkxss(inUser) || checkxss_2(inUser)){
@@ -161,12 +173,13 @@ public class App {
 
                     if(!suclogin){
                         System.out.println("Invalid Username or Password!");
+                        break;
                     }
 
 
 
-
-                    break; 
+                    break;
+                     
                 
                 case "exit":
 
@@ -214,6 +227,7 @@ public class App {
                         if (line.charAt(indexoff) == ' '){
                             while(space){
                                 indexoff++; 
+                                
                                 if (line.charAt(indexoff) != ' '){
                                     // System.out.println(line.charAt(indexoff));
                                     space = false; 
@@ -228,6 +242,34 @@ public class App {
                         }
                         
                     }
+                    else if(line.substring(indexoff, indexoff+6).equals("script")){
+
+                        indexoff += 6; 
+
+                        if (indexoff >= line.length())return false;
+
+                        if(line.charAt(++indexoff) ==  ' ' ){
+                    
+                            while(space){
+                                indexoff++; 
+                                if(indexoff >= line.length()) return false;
+                                if (line.charAt(indexoff) != ' '){
+                                    // System.out.println(line.charAt(indexoff));
+                                    space = false; 
+                                }
+        
+                            }
+
+
+                            if(line.charAt(indexoff) == '>') return true;
+
+                        }
+
+
+
+
+                    }
+
                 }   
 
             }
