@@ -44,7 +44,11 @@ public class App {
     
                 }
                     for (int i = 0 ; i < 100; i++){
-                        if(username.equals(usernames[0])) {
+
+                        // System.out.println(usernames[i][0]);
+                        if(username.equals(usernames[i][0])) {
+                            
+
                             exist = true; 
                             break;
                         } 
