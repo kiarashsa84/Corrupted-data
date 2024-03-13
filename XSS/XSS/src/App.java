@@ -71,6 +71,8 @@ public class App {
                             continue; 
             
                         }
+
+                        
                         boolean verify_cap = false;
                         boolean lower = false; 
                         boolean verify_digit = false;
@@ -92,7 +94,7 @@ public class App {
                                 }
                                 else if(Character.isLowerCase(c)){
                                     lower = true; 
-                                }else if(!Character.isLetterOrDigit(c)){
+                                }else if(c == '@' || c ==  '#' || c == '$' || c==  '%' || c==  '^'||  c=='&' || c == '+' || c == '='){
                                     symbols = true;
                                 }
                             }
@@ -131,6 +133,14 @@ public class App {
 
 
                     String inPass = input.nextLine(); 
+
+                    if (checkxss(inPass) || checkxss_2(inPass)){
+
+                        System.out.println("XSS Attack!");
+                        continue; 
+        
+                    }
+
 
 
                     
